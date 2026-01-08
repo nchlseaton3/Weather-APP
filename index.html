@@ -1,11 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-    
+  <div class="container">
+    <header class="header">
+      <h1>Weather</h1>
+      <p class="sub">High • Low • Forecast • Humidity</p>
+    </header>
+
+    <section class="search">
+      <div class="row">
+        <input id="locationInput" type="text" placeholder="Enter city (e.g., Greensboro) or zip (e.g., 27410)" />
+        <button id="searchBtn">Get Weather</button>
+      </div>
+      <p class="hint">Tip: city or US zip works. Example: <code>Greensboro</code> or <code>27410</code></p>
+    </section>
+
+    <section id="status" class="status"></section>
+
+    <main id="weatherCard" class="card hidden">
+      <div class="card-top">
+        <div>
+          <h2 id="placeName">—</h2>
+          <p id="desc">—</p>
+        </div>
+        <div class="temp">
+          <img id="icon" alt="weather icon" />
+          <span id="currentTemp">—</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="label">High</span>
+          <span id="tempHigh" class="value">—</span>
+        </div>
+        <div class="stat">
+          <span class="label">Low</span>
+          <span id="tempLow" class="value">—</span>
+        </div>
+        <div class="stat">
+          <span class="label">Humidity</span>
+          <span id="humidity" class="value">—</span>
+        </div>
+      </div>
+
+      <h3 class="forecast-title">Forecast</h3>
+      <div id="forecast" class="forecast"></div>
+    </main>
+
+    <footer class="footer">
+      <small>Data from OpenWeather</small>
+    </footer>
+  </div>
 </body>
 </html>
