@@ -2,7 +2,9 @@
 // CONFIG
 
 // Put your OpenWeather API key here:
-const API_KEY = "Your API Key Here";
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 
 // Base URLs
 const CURRENT_URL = "https://api.openweathermap.org/data/2.5/weather";
