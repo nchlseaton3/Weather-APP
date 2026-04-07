@@ -34,6 +34,11 @@ function formatTimeFromDt(dtTxt) {
 function renderCurrent(data) {
   weatherCard.classList.remove("hidden");
 
+  // trigger animation
+  setTimeout(() => {
+    weatherCard.classList.add("show");
+  }, 10);
+
   const city = data.name;
   const country = data.sys?.country ? `, ${data.sys.country}` : "";
   placeName.textContent = `${city}${country}`;
@@ -91,9 +96,12 @@ async function handleSearch() {
   try {
     setStatus("");
     weatherCard.classList.add("hidden");
+    weatherCard.classList.remove("show");
     loadingEl.classList.remove("hidden");
 
-    const res = await fetch(`/api/weather?location=${encodeURIComponent(query)}`);
+    const res = await fetch(
+      `/api/weather?location=${encodeURIComponent(query)}`
+    );
     const data = await res.json();
 
     if (!res.ok) {

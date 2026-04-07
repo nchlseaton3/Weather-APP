@@ -87,6 +87,15 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
   padding: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* When visible */
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hidden {
