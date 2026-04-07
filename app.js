@@ -1,6 +1,7 @@
 const locationInput = document.getElementById("locationInput");
 const searchBtn = document.getElementById("searchBtn");
 const statusEl = document.getElementById("status");
+const loadingEl = document.getElementById("loading");
 
 const weatherCard = document.getElementById("weatherCard");
 const placeName = document.getElementById("placeName");
@@ -88,8 +89,9 @@ async function handleSearch() {
   }
 
   try {
-    setStatus("Loading weather...");
+    setStatus("");
     weatherCard.classList.add("hidden");
+    loadingEl.classList.remove("hidden");
 
     const res = await fetch(`/api/weather?location=${encodeURIComponent(query)}`);
     const data = await res.json();
@@ -100,10 +102,11 @@ async function handleSearch() {
 
     renderCurrent(data.current);
     renderForecast(data.forecast);
-    setStatus("");
   } catch (err) {
     console.error(err);
     setStatus("Could not load weather. Check the city/zip.", true);
+  } finally {
+    loadingEl.classList.add("hidden");
   }
 }
 
